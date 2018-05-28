@@ -106,12 +106,6 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; python mode settings
-(global-eldoc-mode -1)
-(setq python-shell-interpreter "ipython3"
-      python-shell-interpreter-args "--simple-prompt -i")
-
-
 ;; Modified settings from RealPython
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -124,12 +118,17 @@
 ;; --------------------------------------
 
 (elpy-enable)
-;;(elpy-use-ipython) ;; deprecated use jupyter instead
-(setq python-shell-interpreter "jupyter"
+;;(elpy-use-ipython) ;; deprecated use other instead
+(#|setq python-shell-interpreter "jupyter"
       python-shell-interpreter-args "console --simple-prompt"
       python-shell-prompt-detect-failure-warning nil)
 (add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
+             "jupyter")|#
+;; python mode settings
+(global-eldoc-mode -1)
+(setq python-shell-interpreter "ipython3"
+      python-shell-interpreter-args "--simple-prompt -i")
+
              
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
