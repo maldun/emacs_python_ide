@@ -12,6 +12,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+       
 (defvar myPackages
   '(better-defaults
     ein
@@ -29,6 +30,8 @@
     (unless (package-installed-p package)
       (package-install package)))
       myPackages)
+
+
       
 ;; recent files entry
 (require 'recentf)
@@ -123,3 +126,6 @@
 ;; enable autopep8 formatting on save
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+;; load Realgud
+(load-library "realgud")
