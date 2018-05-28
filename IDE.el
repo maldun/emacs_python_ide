@@ -28,6 +28,7 @@
     python-mode 
     auto-complete
     yasnippet
+    yasnippet-snippets
     magit
     py-autopep8))
 
@@ -119,11 +120,11 @@
 
 (elpy-enable)
 ;;(elpy-use-ipython) ;; deprecated use other instead
-(#|setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")|#
+;; (setq python-shell-interpreter "jupyter"
+;;       python-shell-interpreter-args "console --simple-prompt"
+;;       python-shell-prompt-detect-failure-warning nil)
+;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+;;              "jupyter")
 ;; python mode settings
 (global-eldoc-mode -1)
 (setq python-shell-interpreter "ipython3"
