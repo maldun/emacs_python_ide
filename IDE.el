@@ -70,6 +70,16 @@
 (define-key global-map (kbd "s-D") 'uncomment-region) ;; uncomment a region by shortcut Super+Shift+d
 (define-key global-map (kbd "C-r") 'query-replace)    ;; replace
 (define-key global-map (kbd "C-f") 'search-forward)   ;; search
+(define-key global-map (kbd "C-s") 'search-backward)  ;; search backward
+(define-key global-map (kbd "C-M-f") 'search-forward-regexp)   ;; search
+(define-key global-map (kbd "C-M-s") 'search-backward-regexp)  ;; search backward
+(define-key global-map (kbd "C-a") 'mark-whole-buffer)  ;; select all
+(define-key global-map (kbd "C-x C-o") 'find-file)  ;; open file
+
+(defadvice find-file-read-args (around find-file-read-args-always-use-dialog-box act)
+  "Simulate invoking menu item as if by the mouse; see `use-dialog-box'."
+  (let ((last-nonmenu-event nil))
+     ad-do-it))
 
 ;;  )
 (define-key global-map [menu-bar devtools comment] '("Comment Region" . comment-region))
