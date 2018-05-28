@@ -1,3 +1,15 @@
+;; set color theme
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-dark-blue2)
+;; enable auto-complete
+(global-auto-complete-mode t)
+
+(defun auto-complete-mode-maybe ()
+  "No maybe for you. Only AC!"
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
+
 ;; Creating a new menu pane in the menu bar to the right of “Tools” menu
 (define-key-after
   global-map
@@ -24,7 +36,7 @@
 ;;(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 (add-to-list 'auto-mode-alist '("\\SConstruct\\'" . python-mode))
 
-;; init.el --- Emacs configuration
+;; Modified settings from RealPython
 
 ;; INSTALL PACKAGES
 ;; --------------------------------------
@@ -40,7 +52,11 @@
 
 (defvar myPackages
   '(better-defaults
-    material-theme))
+    ein
+    elpy
+    flycheck
+    material-theme
+    py-autopep8))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -54,4 +70,22 @@
 (load-theme 'material t) ;; load material theme
 (global-linum-mode t) ;; enable line numbers globally
 
-;; init.el ends here
+;; PYTHON CONFIGURATION
+;; --------------------------------------
+
+(elpy-enable)
+;;(elpy-use-ipython) ;; deprecated use jupyter instead
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+
+;; use flycheck not flymake with elpy
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; enable autopep8 formatting on save
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
