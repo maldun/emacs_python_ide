@@ -36,8 +36,6 @@
       (package-install package)))
       myPackages)
 
-
-      
 ;; recent files entry
 (require 'recentf)
 (recentf-mode 1)
@@ -48,9 +46,9 @@
 (prefer-coding-system 'utf-8)
 
 ;; set color theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-dark-blue2)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;;(color-theme-dark-blue2)
 ;; enable auto-complete
 (global-auto-complete-mode t)
 
