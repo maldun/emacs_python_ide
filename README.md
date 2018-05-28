@@ -5,3 +5,9 @@ Simply add
 (load-file "/path/to/IDE.el")
 
 to your .emacs
+
+optinally install:
+- jedi
+- flake8
+- rope
+- importmagic
