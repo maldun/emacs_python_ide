@@ -20,6 +20,7 @@
        
 (defvar myPackages
   '(better-defaults
+    async
     ein
     elpy
     flycheck
@@ -30,7 +31,8 @@
     yasnippet
     yasnippet-snippets
     magit
-    py-autopep8))
+    py-autopep8
+    ))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -70,8 +72,10 @@
 (define-key global-map (kbd "s-d") 'comment-region) ;; comment a region by shortcut Super+d
 (define-key global-map (kbd "s-D") 'uncomment-region) ;; uncomment a region by shortcut Super+Shift+d
 (define-key global-map (kbd "C-r") 'query-replace)    ;; replace
-(define-key global-map (kbd "C-f") 'search-forward)   ;; search
-(define-key global-map (kbd "C-s") 'search-backward)  ;; search backward
+(define-key global-map (kbd "C-f") 'isearch-forward)   ;; search
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward) ;; search forward
+(define-key global-map (kbd "C-s") 'isearch-backward)  ;; search backward
+(define-key isearch-mode-map "\C-s" 'isearch-repeat-backward) ;; repeat backward
 (define-key global-map (kbd "C-M-f") 'search-forward-regexp)   ;; search
 (define-key global-map (kbd "C-M-s") 'search-backward-regexp)  ;; search backward
 (define-key global-map (kbd "C-a") 'mark-whole-buffer)  ;; select all
