@@ -97,6 +97,9 @@
 (define-key global-map [menu-bar devtools start-ipdb] '("Start ipdb" . realgud:ipdb))
 (define-key global-map [menu-bar devtools ipdb-debug] '("Debugs Symbols" . realgud-short-key-mode))
 
+;; buffer switching
+(define-key global-map (kbd "s-<right>") 'next-buffer)  ;; switch to next buffer
+(define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; switch to next buffer
 ;;)
 ;;(require 'ido
 ;;(ido-mode t)
