@@ -1,0 +1,2 @@
+#!/bin/bash
+ipython3 --simple-prompt -c "%run -d $@"
