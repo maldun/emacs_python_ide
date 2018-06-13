@@ -90,6 +90,13 @@
 (define-key global-map [menu-bar devtools comment] '("Comment Region" . comment-region))
 (define-key global-map [menu-bar devtools uncomment] '("Unomment Region" . uncomment-region))
 
+;; Python Debugging
+(define-key global-map (kbd "s-r") 'realgud:ipdb)  ;; start realgud
+(define-key global-map (kbd "s-e") 'realgud-short-key-mode)  ;; start realgud
+
+(define-key global-map [menu-bar devtools start-ipdb] '("Start ipdb" . realgud:ipdb))
+(define-key global-map [menu-bar devtools ipdb-debug] '("Debugs Symbols" . realgud-short-key-mode))
+
 ;;)
 ;;(require 'ido
 ;;(ido-mode t)
