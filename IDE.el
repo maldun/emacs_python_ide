@@ -32,6 +32,8 @@
     yasnippet-snippets
     magit
     py-autopep8
+    dockerfile-mode
+    docker-compose-mode
     ))
 
 (mapc #'(lambda (package)
@@ -100,6 +102,7 @@
 ;; buffer switching
 (define-key global-map (kbd "s-<right>") 'next-buffer)  ;; switch to next buffer
 (define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; switch to previous buffer
+
 ;;)
 ;;(require 'ido
 ;;(ido-mode t)
@@ -156,3 +159,6 @@
 
 ;; load Realgud
 (load-library "realgud")
+
+;; start server
+(server-start)
