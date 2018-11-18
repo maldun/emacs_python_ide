@@ -33,7 +33,16 @@
     yasnippet-snippets
     magit
     py-autopep8
+    dockerfile-mode
+    docker-compose-mode
+    org
     ))
+
+;; org mode
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done 'time)
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -99,9 +108,9 @@
 (define-key global-map [menu-bar devtools start-ipdb] '("Start ipdb" . realgud:ipdb))
 (define-key global-map [menu-bar devtools ipdb-debug] '("Debugs Symbols" . realgud-short-key-mode))
 
-;; Python Debugging
-(define-key global-map (kbd "s-<right>") 'next-buffer)  ;; next buffer
-(define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; prev buffer
+;; buffer switching
+(define-key global-map (kbd "s-<right>") 'next-buffer)  ;; switch to next buffer
+(define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; switch to previous buffer
 
 ;;)
 ;;(require 'ido
