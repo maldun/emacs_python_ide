@@ -26,7 +26,8 @@
     flycheck
     material-theme
     realgud 
-    python-mode 
+    python-mode
+    popwin
     auto-complete
     yasnippet
     yasnippet-snippets
