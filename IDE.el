@@ -36,6 +36,7 @@
     dockerfile-mode
     docker-compose-mode
     org
+    markdown-mode
     ))
 
 ;; org mode
