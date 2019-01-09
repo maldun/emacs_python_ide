@@ -42,7 +42,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done 'time)
-
+(setq org-time-stamp-custom-formats '("<%d/%m/%y %a %H:%M:%S>" "<%d/%m/%y %a %H:%M:%S>"))
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
