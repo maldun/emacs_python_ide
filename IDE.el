@@ -26,7 +26,8 @@
     flycheck
     material-theme
     realgud 
-    python-mode 
+    python-mode
+    popwin
     auto-complete
     yasnippet
     yasnippet-snippets
@@ -35,6 +36,7 @@
     dockerfile-mode
     docker-compose-mode
     org
+    markdown-mode
     ))
 
 ;; org mode
@@ -62,12 +64,13 @@
 ;;(color-theme-initialize)
 ;;(color-theme-dark-blue2)
 ;; enable auto-complete
-(global-auto-complete-mode t)
+;; (global-auto-complete-mode t)
 
-(defun auto-complete-mode-maybe ()
-  "No maybe for you. Only AC!"
-  (unless (minibufferp (current-buffer))
-    (auto-complete-mode 1)))
+;; (defun auto-complete-mode-maybe ()
+;;   "No maybe for you. Only AC!"
+;;   (unless (minibufferp (current-buffer))
+;;     (auto-complete-mode 1)))
+(ac-config-default)
 
 ;; Creating a new menu pane in the menu bar to the right of “Tools” menu
 (define-key-after
