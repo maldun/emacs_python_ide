@@ -177,3 +177,7 @@
 (desktop-save-mode 1) ; 0 for off
 (setq desktop-restore-eager 10)
 (setq desktop-save t)
+
+;; autocomplete at start
+(global-auto-complete-mode t)
+
