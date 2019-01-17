@@ -172,3 +172,8 @@
 
 ;; start server
 (server-start)
+
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
+(setq desktop-restore-eager 10)
+(setq desktop-save t)
