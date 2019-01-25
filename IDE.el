@@ -172,3 +172,6 @@
 
 ;; start server
 (server-start)
+
+;; Show Brackets
+(show-paren-mode 1)
