@@ -181,3 +181,5 @@
 ;; autocomplete at start
 (global-auto-complete-mode t)
 
+;; Showing connected parentheses 
+(show-paren-mode 1)
