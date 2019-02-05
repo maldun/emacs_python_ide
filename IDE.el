@@ -45,7 +45,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done 'time)
-
+(setq org-time-stamp-custom-formats '("<%d/%m/%y %a %H:%M:%S>" "<%d/%m/%y %a %H:%M:%S>"))
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
@@ -187,6 +187,9 @@
 (desktop-save-mode 1) ; 0 for off
 (setq desktop-restore-eager 10)
 (setq desktop-save t)
+
+;; autocomplete at start
+(global-auto-complete-mode t)
 
 ;; Showing connected parentheses 
 (show-paren-mode 1)
