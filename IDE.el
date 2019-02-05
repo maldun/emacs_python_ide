@@ -37,6 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
+    neotree    
     ))
 
 ;; org mode
@@ -175,3 +176,9 @@
 
 ;; Show Brackets
 (show-paren-mode 1)
+
+;; A static file list is really cool, like a modern IDE
+(package-initialize)
+(require 'package)
+(require 'neotree)
+(global-set-key (kbd "C-x M-f") 'neotree-toggle)
