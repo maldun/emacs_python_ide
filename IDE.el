@@ -37,6 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
+    neotree    
     ))
 
 ;; org mode
@@ -173,6 +174,15 @@
 ;; start server
 (server-start)
 
+;; Show Brackets
+(show-paren-mode 1)
+
+;; A static file list is really cool, like a modern IDE
+(package-initialize)
+(require 'package)
+(require 'neotree)
+(global-set-key (kbd "C-x M-f") 'neotree-toggle)
+
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
 (setq desktop-restore-eager 10)
@@ -183,3 +193,4 @@
 
 ;; Showing connected parentheses 
 (show-paren-mode 1)
+
