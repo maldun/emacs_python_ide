@@ -223,3 +223,12 @@
 (require 'highlight-symbol)
 (highlight-symbol-mode 1)
 
+;; On Ctrl-Left-Click goto definition
+;; Pretty useful, proudly stolen from https://emacs.stackexchange.com/a/19194/21383
+(defun goto-def-or-rgrep ()
+  "Go to definition of thing at point or do an rgrep in project if that fails"
+  (interactive)
+  (condition-case nil (elpy-goto-definition)
+    (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
+(define-key elpy-mode-map [C-down-mouse-1]  'goto-def-or-rgrep)
+
