@@ -37,7 +37,10 @@
     docker-compose-mode
     org
     markdown-mode
-    neotree    
+    neotree   
+    all-the-icons
+    use-package
+    highlight-symbol
     ))
 
 ;; org mode
@@ -182,15 +185,50 @@
 (require 'package)
 (require 'neotree)
 (global-set-key (kbd "C-x M-f") 'neotree-toggle)
+  (setq neo-window-fixed-size nil)
 
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
 (setq desktop-restore-eager 10)
 (setq desktop-save t)
+(setq desktop-restore-frames t)
+(setq desktop-restore-in-current-display t)
 
 ;; autocomplete at start
 (global-auto-complete-mode t)
 
 ;; Showing connected parentheses 
 (show-paren-mode 1)
+
+;; You require use-package to...
+(require 'use-package)
+
+;; .. run this command only once
+;; It will install the fonts only on first run
+(use-package all-the-icons
+  :ensure t
+  :config
+  :init
+  (unless (package-installed-p 'all-the-icons)
+    (all-the-icons-install-fonts))
+  )
+
+;; All modern IDEs have the feature to obtain a list of the current documents
+(require 'all-the-icons)
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+;; As your cursor is on a variable, all other occurrances will lighten up
+(require 'highlight-symbol)
+(highlight-symbol-mode 1)
+
+;; On Ctrl-Left-Click goto definition
+;; Pretty useful, proudly stolen from https://emacs.stackexchange.com/a/19194/21383
+(defun goto-def-or-rgrep ()
+  "Go to definition of thing at point or do an rgrep in project if that fails"
+  (interactive)
+  (condition-case nil (elpy-goto-definition)
+    (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
+(define-key elpy-mode-map [C-down-mouse-1]  'goto-def-or-rgrep)
 
