@@ -104,7 +104,7 @@
 
 ;;  )
 (define-key global-map [menu-bar devtools comment] '("Comment Region" . comment-region))
-(define-key global-map [menu-bar devtools uncomment] '("Unomment Region" . uncomment-region))
+(define-key global-map [menu-bar devtools uncomment] '("Uncomment Region" . uncomment-region))
 
 ;; Python Debugging
 (define-key global-map (kbd "s-r") 'realgud:ipdb)  ;; start realgud
@@ -232,3 +232,18 @@
     (error (elpy-rgrep-symbol (thing-at-point 'symbol)))))
 (define-key elpy-mode-map [C-down-mouse-1]  'goto-def-or-rgrep)
 
+;; I like to have a shell running in a window, yet it keeps being overwritten
+;; C-c t now dedicates the window to the buffer
+;; Proudly stolen from https://emacs.stackexchange.com/a/2198/21383
+(defun toggle-window-dedicated ()
+  "Control whether or not Emacs is allowed to display another
+buffer in current window."
+  (interactive)
+  (message
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window (not (window-dedicated-p window))))
+       "%s: Can't touch this!"
+     "%s is up for grabs.")
+   (current-buffer)))
+
+(global-set-key (kbd "C-c t") 'toggle-window-dedicated)
