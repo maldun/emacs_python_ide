@@ -219,6 +219,10 @@
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
+;; Showing differences to the last Git commit
+(require 'diff-hl)
+(global-diff-hl-mode)
+
 ;; As your cursor is on a variable, all other occurrances will lighten up
 (require 'highlight-symbol)
 (highlight-symbol-mode 1)
@@ -247,3 +251,11 @@ buffer in current window."
    (current-buffer)))
 
 (global-set-key (kbd "C-c t") 'toggle-window-dedicated)
+
+;;Marking lines
+(require 'bm)
+(global-set-key (kbd "<s-f2>") 'bm-toggle)
+(global-set-key (kbd "<s-f4>")   'bm-next)
+(global-set-key (kbd "<s-f3>") 'bm-previous)
+;;Change the colour if you don't like RoyalBlue4
+(set-face-attribute 'bm-face nil :background "RoyalBlue4" :foreground 'unspecified)
