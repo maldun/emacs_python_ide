@@ -14,7 +14,7 @@ optinally install:
 - rope
 - importmagic
 
-#Sphinx-Compatible defs
+### Sphinx-Compatible defs
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do a symbolic link:
 ```
