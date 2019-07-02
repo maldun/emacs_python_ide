@@ -144,12 +144,13 @@
 
 ;;(setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'material t) ;; load material theme
-;;(global-linum-mode t) ;; enable line numbers globally ... slow
+(global-linum-mode 0) ;; enable line numbers globally ... slow therefore disabled
 ;; alternative from http://ergoemacs.org/emacs/emacs_line_number_mode.html:
 (defun nolinum ()
   (global-linum-mode 0)
 )
 (add-hook 'org-mode-hook 'nolinum)
+(add-hook 'python-mode-hook 'nolinum)
 (global-display-line-numbers-mode t) ;; enable line numbers 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
