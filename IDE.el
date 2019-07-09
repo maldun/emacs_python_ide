@@ -41,6 +41,7 @@
     all-the-icons
     use-package
     highlight-symbol
+    color-theme-modern
     ))
 
 ;; org mode
@@ -253,3 +254,6 @@ buffer in current window."
    (current-buffer)))
 
 (global-set-key (kbd "C-c t") 'toggle-window-dedicated)
+
+;; load color theme (optional)
+;; (load-theme 'dark-blue2)
