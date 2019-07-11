@@ -254,6 +254,8 @@ buffer in current window."
    (current-buffer)))
 
 (global-set-key (kbd "C-c t") 'toggle-window-dedicated)
+;; automatically reverts buffers
+(global-auto-revert-mode 1)
 
 ;; load color theme (optional)
 ;; (load-theme 'dark-blue2)
