@@ -1,0 +1,3 @@
+[submodule "blacken"]
+	path = blacken
+	url = https://github.com/pythonic-emacs/blacken
