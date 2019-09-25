@@ -42,6 +42,7 @@
     use-package
     highlight-symbol
     blacken
+    diff-hl
     ))
 
 ;; org mode
