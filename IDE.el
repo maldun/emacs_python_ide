@@ -41,6 +41,7 @@
     all-the-icons
     use-package
     highlight-symbol
+    color-theme-modern
     ))
 
 ;; org mode
@@ -144,8 +145,14 @@
 
 ;;(setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'material t) ;; load material theme
-(global-linum-mode t) ;; enable line numbers globally
-
+(global-linum-mode 0) ;; enable line numbers globally ... slow therefore disabled
+;; alternative from http://ergoemacs.org/emacs/emacs_line_number_mode.html:
+(defun nolinum ()
+  (global-linum-mode 0)
+)
+(add-hook 'org-mode-hook 'nolinum)
+(add-hook 'python-mode-hook 'nolinum)
+(global-display-line-numbers-mode t) ;; enable line numbers 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
@@ -259,3 +266,8 @@ buffer in current window."
 (global-set-key (kbd "<s-f3>") 'bm-previous)
 ;;Change the colour if you don't like RoyalBlue4
 (set-face-attribute 'bm-face nil :background "RoyalBlue4" :foreground 'unspecified)
+;; automatically reverts buffers
+(global-auto-revert-mode 1)
+
+;; load color theme (optional)
+;; (load-theme 'dark-blue2)
