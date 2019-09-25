@@ -42,6 +42,8 @@
     use-package
     highlight-symbol
     color-theme-modern
+    diff-hl
+    bm
     ))
 
 ;; org mode
