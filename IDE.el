@@ -42,7 +42,6 @@
     use-package
     highlight-symbol
     blacken
-    diff-hl
     color-theme-modern
     diff-hl
     bm
