@@ -159,6 +159,10 @@
 ;; --------------------------------------
 
 (elpy-enable)
+(setq py-interpreter "python3")
+(setq elpy-rpc-python-command py-interpreter)
+(message "Install Python packages")
+(shell-command (mapconcat 'identity (list py-interpreter "-m" "pip" "install" "--user" "jedi" "autopep8" "yapf" "black" "flake8") " "))
 ;;(elpy-use-ipython) ;; deprecated use other instead
 ;; (setq python-shell-interpreter "jupyter"
 ;;       python-shell-interpreter-args "console --simple-prompt"
