@@ -43,6 +43,9 @@
     highlight-symbol
     blacken
     diff-hl
+    color-theme-modern
+    diff-hl
+    bm
     ))
 
 ;; org mode
@@ -146,12 +149,22 @@
 
 ;;(setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'material t) ;; load material theme
-(global-linum-mode t) ;; enable line numbers globally
-
+(global-linum-mode 0) ;; enable line numbers globally ... slow therefore disabled
+;; alternative from http://ergoemacs.org/emacs/emacs_line_number_mode.html:
+(defun nolinum ()
+  (global-linum-mode 0)
+)
+(add-hook 'org-mode-hook 'nolinum)
+(add-hook 'python-mode-hook 'nolinum)
+(global-display-line-numbers-mode t) ;; enable line numbers 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
 (elpy-enable)
+(setq py-interpreter "python3")
+(setq elpy-rpc-python-command py-interpreter)
+(message "Install Python packages")
+(shell-command (mapconcat 'identity (list py-interpreter "-m" "pip" "install" "--user" "jedi" "autopep8" "yapf" "black" "flake8" "importmagic") " "))
 ;;(elpy-use-ipython) ;; deprecated use other instead
 ;; (setq python-shell-interpreter "jupyter"
 ;;       python-shell-interpreter-args "console --simple-prompt"
@@ -262,11 +275,6 @@ buffer in current window."
 ;;Change the colour if you don't like RoyalBlue4
 (set-face-attribute 'bm-face nil :background "RoyalBlue4" :foreground 'unspecified)
 
-
-;; Let's try blacken
-;;(add-to-list 'load-path "/blacken/")
-;;(load "blacken.el")
-
 ;; Emacs 24 renamed flet to cl-flet.
 (defalias 'mh-cl-flet
   (if (fboundp 'cl-flet)
@@ -298,3 +306,8 @@ buffer in current window."
 
 ;;}}}
 
+;; automatically reverts buffers
+(global-auto-revert-mode 1)
+
+;; load color theme (optional)
+;; (load-theme 'dark-blue2)
