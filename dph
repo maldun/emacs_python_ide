@@ -1,0 +1,9 @@
+# name: do_python_header
+# key: dph
+# --
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#############################################
+# Author: Mario Schwaiger                   #
+# Email:  mario.schwaiger@v2c2.at           #
+#############################################

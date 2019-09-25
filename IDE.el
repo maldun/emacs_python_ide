@@ -41,6 +41,8 @@
     all-the-icons
     use-package
     highlight-symbol
+    blacken
+    diff-hl
     color-theme-modern
     diff-hl
     bm
@@ -272,6 +274,38 @@ buffer in current window."
 (global-set-key (kbd "<s-f3>") 'bm-previous)
 ;;Change the colour if you don't like RoyalBlue4
 (set-face-attribute 'bm-face nil :background "RoyalBlue4" :foreground 'unspecified)
+
+;; Emacs 24 renamed flet to cl-flet.
+(defalias 'mh-cl-flet
+  (if (fboundp 'cl-flet)
+      'cl-flet
+    'flet))
+
+;;{{{ yasnippet & auto-insert
+
+(use-package yasnippet
+  :config
+  (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+  (yas-global-mode 1))
+
+(defun marioschwaiger/yas-python ()
+  (interactive)
+;;  (yas-expand-snippet (yas-lookup-snippet "cmake_minimum_required" 'cmake-mode)))
+  (yas-expand-snippet (yas-lookup-snippet "do_python_header" 'python-mode)))
+
+
+(use-package autoinsert
+  :config
+  (setq auto-insert-query nil)
+  (auto-insert-mode 1)
+  (add-hook 'find-file-hook 'auto-insert)
+  (setq auto-insert-alist nil) ;; remove this like to restore defaults
+;;  (add-to-list 'auto-insert-alist  '("CMakeLists\\.txt$" . [nega/yas-cmake-bp])))
+;;  (add-to-list 'auto-mode-alist '("\\.py\\'"  . python-mode)))
+  (add-to-list 'auto-insert-alist  '("\\.py$" . [marioschwaiger/yas-python])))
+
+;;}}}
+
 ;; automatically reverts buffers
 (global-auto-revert-mode 1)
 
