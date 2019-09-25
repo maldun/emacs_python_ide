@@ -175,7 +175,20 @@
 (setq python-shell-interpreter "ipython3"
       python-shell-interpreter-args "--simple-prompt -i")
 
-             
+(message "Link snippets")
+(setq snip1 "defs")
+(setq snip2 "dph")
+
+(setq middle "elpa/elpy-*/snippets/python-mode/")
+(setq path-helper1 (mapconcat 'identity (list IDE-path middle) ""))
+(setq path-helper2 (mapconcat 'identity (list IDE-path snip1) ""))
+(shell-command (mapconcat 'identity (list "ln" "-s" path-helper2 path-helper1) " "))
+
+(setq path-helper3 (mapconcat 'identity (list IDE-path middle) ""))
+(setq path-helper4 (mapconcat 'identity (list IDE-path snip2) ""))
+(shell-command (mapconcat 'identity (list "ln" "-s" path-helper4 path-helper3) " "))
+
+
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))

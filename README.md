@@ -9,7 +9,8 @@ or change the variable py-interpreter in the IDE.el to python:
 
 ## Install
 Simply add 
-(load-file "/path/to/IDE.el")
+(setq IDE-path "~/.emacs.d/")
+(load (mapconcat 'identity (list IDE-path "IDE.el") ""))
 
 to your .emacs
 
