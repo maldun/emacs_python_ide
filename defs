@@ -5,8 +5,8 @@
 # --
 def ${1:methodname}(self, ${2:arg}):
     """
-    :param $2: ${3:arg1desc}
-    :type $2: ${4:arg1type}
+    :param $2: ${3:$2_desc}
+    :type $2: ${4:$2_type}
     :returns: ${5:returns}
     :rtype: ${6:rettype}
     """

@@ -6,4 +6,5 @@
 #############################################
 # Author: Mario Schwaiger                   #
 # Email:  mario.schwaiger@v2c2.at           #
+# Created:`(format-time-string "%d.%m.%Y %H:%M")`$0                  #
 #############################################
