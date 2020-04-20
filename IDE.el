@@ -376,3 +376,9 @@ buffer in current window."
 
 ;; Highlights current line
 (global-hl-line-mode +1)
+
+
+(use-package awesome-tab
+  :load-path "/home/schwaigeradm/src/awesome-tab"
+  :config
+  (awesome-tab-mode t))
