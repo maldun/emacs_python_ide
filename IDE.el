@@ -45,6 +45,8 @@
     color-theme-modern
     diff-hl
     bm
+    highlight-numbers
+    auto-highlight-symbol
     ))
 
 ;; org mode
@@ -182,11 +184,11 @@
 (setq middle "elpa/elpy-*/snippets/python-mode/")
 (setq path-helper1 (mapconcat 'identity (list IDE-path middle) ""))
 (setq path-helper2 (mapconcat 'identity (list IDE-path snip1) ""))
-(shell-command (mapconcat 'identity (list "ln" "-s" path-helper2 path-helper1) " "))
+(shell-command (mapconcat 'identity (list "ln" "-sf" path-helper2 path-helper1) " "))
 
 (setq path-helper3 (mapconcat 'identity (list IDE-path middle) ""))
 (setq path-helper4 (mapconcat 'identity (list IDE-path snip2) ""))
-(shell-command (mapconcat 'identity (list "ln" "-s" path-helper4 path-helper3) " "))
+(shell-command (mapconcat 'identity (list "ln" "-sf" path-helper4 path-helper3) " "))
 
 
 ;; use flycheck not flymake with elpy
@@ -214,12 +216,16 @@
 (global-set-key (kbd "C-x M-f") 'neotree-toggle)
   (setq neo-window-fixed-size nil)
 
-;; save/restore opened files and windows config
-(desktop-save-mode 1) ; 0 for off
-(setq desktop-restore-eager 10)
-(setq desktop-save t)
-(setq desktop-restore-frames t)
-(setq desktop-restore-in-current-display t)
+;; Automatically save and restore sessions
+(setq desktop-dirname             "~/.emacs.d/desktop/"
+      desktop-base-file-name      "emacs.desktop"
+      desktop-base-lock-name      "lock"
+      desktop-path                (list desktop-dirname)
+      desktop-save                t
+      desktop-files-not-to-save   "^$" ;reload tramp paths
+      desktop-load-locked-desktop nil
+      desktop-auto-save-timeout   30)
+(desktop-save-mode 1)
 
 ;; autocomplete at start
 (global-auto-complete-mode t)
@@ -321,5 +327,58 @@ buffer in current window."
 ;; automatically reverts buffers
 (global-auto-revert-mode 1)
 
+;; highlight numbers
+(add-hook 'prog-mode-hook 'highlight-numbers-mode)
 ;; load color theme (optional)
 ;; (load-theme 'dark-blue2)
+
+;; highlight-symbols: But works!
+(global-auto-highlight-symbol-mode)
+(define-key auto-highlight-symbol-mode-map (kbd "M-p") 'ahs-backward)
+(define-key auto-highlight-symbol-mode-map (kbd "M-n") 'ahs-forward)
+(setq ahs-idle-interval 1.0) ;; if you want instant highlighting, set it to 0, but I find it annoying
+(setq ahs-default-range 'ahs-range-whole-buffer) ;; highlight every occurence in buffer
+
+;; inhibits highlighting in specific places, like in comments
+(setq ahs-inhibit-face-list '(font-lock-comment-delimiter-face
+                                font-lock-comment-face
+                                font-lock-doc-face
+                                font-lock-doc-string-face
+                                font-lock-string-face))
+
+
+;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+;; may have their own settings.
+(load-theme 'doom-one t)
+
+;; Enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+
+;; Enable custom neotree theme (all-the-icons must be installed!)
+(doom-themes-neotree-config)
+;; or for treemacs users
+(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+(doom-themes-treemacs-config)
+
+;; Corrects (and improves) org-mode's native fontification.
+(doom-themes-org-config)
+
+
+(require 'sublimity)
+;; (require 'sublimity-scroll)
+;; (require 'sublimity-map) ;; experimental
+;; (require 'sublimity-attractive)
+
+(sublimity-mode 1)
+
+(setq sublimity-scroll-weight 10
+      isublimity-scroll-drift-length 5)
+
+;; Highlights current line
+(global-hl-line-mode +1)
+
+
+(use-package awesome-tab
+  :load-path "/home/schwaigeradm/src/awesome-tab"
+  :config
+  (awesome-tab-mode t))
