@@ -47,6 +47,9 @@
     bm
     highlight-numbers
     auto-highlight-symbol
+    doom-themes
+    sublimity
+    centaur-tabs
     ))
 
 ;; org mode
@@ -377,8 +380,10 @@ buffer in current window."
 ;; Highlights current line
 (global-hl-line-mode +1)
 
-
-(use-package awesome-tab
-  :load-path "/home/schwaigeradm/src/awesome-tab"
+(use-package centaur-tabs
+  :demand
   :config
-  (awesome-tab-mode t))
+  (centaur-tabs-mode t)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))
