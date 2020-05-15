@@ -34,8 +34,15 @@ with pip.
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do a symbolic link:
 ```
-ln -s /home/<wherever_you_saved_this_repo>/defs /home/$USER/.emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
+ln -s /home/<wherever_you_saved_this_repo>/defs /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/defs
 ```
+
+I personally find the snippet in pdbpm pretty useful to be able to debug on failure. It doesn't exist, so no backup required.
+```
+ln -s /home/<wherever_you_saved_this_repo>/pdbpm /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/pdbpm
+```
+
+
 
 ## Notes
 
