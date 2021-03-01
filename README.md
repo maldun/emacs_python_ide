@@ -3,7 +3,7 @@ Settings to make emacs a python-ide
 
 ## Prerequisites
 The command python3 should be installed.
-If not eitehr create a symlink named python3 to python2
+If not either create a symlink named python3 to python2
 or change the variable py-interpreter in the IDE.el to python:
 ```
 (setq py-interpreter "python3") to (setq py-interpreter "python3")  
