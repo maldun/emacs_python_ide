@@ -10,10 +10,15 @@ or change the variable py-interpreter in the IDE.el to python:
 ```
 
 ## Install
-Simply add 
+
 ```
-(setq IDE-path "~/.emacs.d/")
-(load (mapconcat 'identity (list IDE-path "IDE.el") ""))
+$ sudo dnf install emacs #Basic Install
+$ emacs #Needs to be started once so you get the .emacs.d folder. Close again after the successful start
+$ git clone https://github.com/maldun/emacs_python_ide .emacs.d/
+#Adding: 
+$ echo '(setq IDE-path "~/.emacs.d/")' >> .emacs
+$ echo "(load (mapconcat 'identity (list IDE-path \"IDE.el\") \"\"))" >> .emacs
+$ emacs #Have fun
 ```
 
 to your .emacs
