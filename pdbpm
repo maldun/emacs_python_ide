@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: try: except post mortem
+# key: pdbpm
+# group: Debug
+# --
+
+try:
+
+except:
+    import sys
+    import traceback
+    import pdb
+    extype, value, tb = sys.exc_info()
+    traceback.print_exc()
+    pdb.post_mortem(tb)
