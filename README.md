@@ -34,6 +34,9 @@ The packages:
 should be automatically installed
 with pip.
 
+If not, use:
+```pip3 install --user black flake8 jedi rope importmagic```
+
 
 ### Sphinx-Compatible defs
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
@@ -70,3 +73,40 @@ For this just use the command:
 ```bm-toggle```
 
 There's a shortcut that used to work, but doesn't. Edits are welcome
+
+## Potential Errors (Possibly Ubuntu)
+
+```
+Elpy is creating the RPC virtualenv (’/home/marioschwaiger/.emacs.d/elpy/rpc-venv’)
+elpy-rpc--create-virtualenv: Elpy needs the ’virtualenv’ or ’venv’ python packages to create its virtualenv. Please install one of them or disable the dedicated virtualenv with ‘(setq elpy-rpc-virtualenv-path ’current)‘
+```
+
+virtualenv is missing, just install:
+```sudo apt install virtualenv```
+
+### Neither easy_install nor pip found
+
+```Try installing a more recent version of python-pycompile, and please open a bug report if the issue persists in the latest release.  Thanks!
+elpy-insert--pip-button-value-create: Neither easy_install nor pip found```
+
+Just install:
+```sudo apt install python3-pip```
+```
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/usr/lib/python3.8/py_compile.py", line 218, in <module>
+    sys.exit(main())
+  File "/usr/lib/python3.8/py_compile.py", line 213, in main
+    if quiet < 2:
+NameError: name 'quiet' is not defined
+
+Try installing a more recent version of python-pycompile, and please open a bug report if the issue persists in the latest release.  Thanks!
+mwheel-scroll: End of buffer
+Mark set
+```
+
