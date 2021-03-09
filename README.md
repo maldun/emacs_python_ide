@@ -87,10 +87,14 @@ virtualenv is missing, just install:
 ### Neither easy_install nor pip found
 
 ```Try installing a more recent version of python-pycompile, and please open a bug report if the issue persists in the latest release.  Thanks!
-elpy-insert--pip-button-value-create: Neither easy_install nor pip found```
+elpy-insert--pip-button-value-create: Neither easy_install nor pip found
+```
 
 Just install:
 ```sudo apt install python3-pip```
+
+###NameError: name 'quiet' is not defined
+
 ```
 During handling of the above exception, another exception occurred:
 
@@ -107,6 +111,14 @@ NameError: name 'quiet' is not defined
 
 Try installing a more recent version of python-pycompile, and please open a bug report if the issue persists in the latest release.  Thanks!
 mwheel-scroll: End of buffer
-Mark set
 ```
+###Error: (error "autopep8 command not found.")
 
+```
+sudo apt-get install python3-autopep8
+
+#OR
+
+pip3 install autopep8
+
+```
