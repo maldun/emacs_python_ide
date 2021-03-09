@@ -122,3 +122,6 @@ sudo apt-get install python3-autopep8
 pip3 install autopep8
 
 ```
+
+### Neotree doesn's show symbols
+```M-x all-the-icons-install-fonts```
