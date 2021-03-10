@@ -125,3 +125,8 @@ pip3 install autopep8
 
 ### Neotree doesn's show symbols
 ```M-x all-the-icons-install-fonts```
+
+## Dealing with other Errors
+```
+M-x toggle-debug-on-error
+```
