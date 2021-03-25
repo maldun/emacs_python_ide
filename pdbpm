@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: try: except post mortem
 # key: pdbpm
-# group: Debug
+# group: debug
 # --
 
 try:

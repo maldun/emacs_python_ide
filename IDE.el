@@ -37,7 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
-    neotree   
+;;    neotree   
     all-the-icons
     use-package
     highlight-symbol
@@ -215,6 +215,7 @@
 ;; A static file list is really cool, like a modern IDE
 (package-initialize)
 (require 'package)
+(add-to-list 'load-path "/home/marioschwaiger/.emacs.d/neotree")
 (require 'neotree)
 (global-set-key (kbd "C-x M-f") 'neotree-toggle)
   (setq neo-window-fixed-size nil)
@@ -254,6 +255,9 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;; I'm a Nerd
+(setq neo-theme 'nerd)
+(setq neo-vc-integration '(face))
 
 ;; Showing differences to the last Git commit
 (require 'diff-hl)
