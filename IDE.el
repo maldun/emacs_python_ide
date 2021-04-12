@@ -50,6 +50,8 @@
     doom-themes
     sublimity
     centaur-tabs
+    rainbow-delimiters ;;12.4.21
+    smartparens;;12.4.21
     ))
 
 ;; org mode
@@ -394,3 +396,13 @@ buffer in current window."
 
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
+
+;;12.4.21 - Rainbow Delimiter
+;;It needs to be activated with any kind of existing mode. I choose you, elpy-mode-hook
+;;(add-hook 'global-hl-line-mode #'rainbow-delimiters-mode) ;; This ain't working
+(add-hook 'elpy-mode-hook 'rainbow-delimiters-mode)
+
+
+;; Similar for this mode
+;; Always start smartparens mode in js-mode.
+(add-hook 'elpy-mode-hook 'smartparens-mode)

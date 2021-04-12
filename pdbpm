@@ -9,7 +9,7 @@ try:
 except:
     import sys
     import traceback
-    import pdb
+    import ipdb
     extype, value, tb = sys.exc_info()
     traceback.print_exc()
-    pdb.post_mortem(tb)
+    ipdb.post_mortem(tb)
