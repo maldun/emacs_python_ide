@@ -37,7 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
-    neotree   
+;;    neotree   
     all-the-icons
     use-package
     highlight-symbol
@@ -50,6 +50,8 @@
     doom-themes
     sublimity
     centaur-tabs
+    rainbow-delimiters ;;12.4.21
+    smartparens;;12.4.21
     ))
 
 ;; org mode
@@ -215,6 +217,7 @@
 ;; A static file list is really cool, like a modern IDE
 (package-initialize)
 (require 'package)
+(add-to-list 'load-path "/home/marioschwaiger/.emacs.d/neotree")
 (require 'neotree)
 (global-set-key (kbd "C-x M-f") 'neotree-toggle)
   (setq neo-window-fixed-size nil)
@@ -254,6 +257,9 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;; I'm a Nerd
+(setq neo-theme 'nerd)
+(setq neo-vc-integration '(face))
 
 ;; Showing differences to the last Git commit
 (require 'diff-hl)
@@ -390,3 +396,13 @@ buffer in current window."
 
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
+
+;;12.4.21 - Rainbow Delimiter
+;;It needs to be activated with any kind of existing mode. I choose you, elpy-mode-hook
+;;(add-hook 'global-hl-line-mode #'rainbow-delimiters-mode) ;; This ain't working
+(add-hook 'elpy-mode-hook 'rainbow-delimiters-mode)
+
+
+;; Similar for this mode
+;; Always start smartparens mode in js-mode.
+(add-hook 'elpy-mode-hook 'smartparens-mode)

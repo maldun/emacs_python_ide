@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: remote_pdb (0.0.0.0:4444)
+# key: rpdb
+# group: debug
+# --
+
+__import__("remote_pdb").set_trace(host='0.0.0.0', port=4444)
