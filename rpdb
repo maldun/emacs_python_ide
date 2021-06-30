@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: remote_pdb (0.0.0.0:4444)
+# name: remote_pdb telnet localhost 4444
 # key: rpdb
 # group: debug
 # --
