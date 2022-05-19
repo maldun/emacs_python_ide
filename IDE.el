@@ -37,7 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
-;;    neotree   
+    sphinx-doc
     all-the-icons
     use-package
     highlight-symbol
@@ -52,6 +52,7 @@
     centaur-tabs
     rainbow-delimiters ;;12.4.21
     smartparens;;12.4.21
+    json-mode;;19.5.
     ))
 
 ;; org mode
@@ -512,3 +513,9 @@ buffer in current window."
    (setq auto-package-update-delete-old-versions t
          auto-package-update-interval 4)
    (auto-package-update-maybe))
+
+
+;;This is used for the Autodoc
+(add-hook 'python-mode-hook (lambda ()
+                                  (require 'sphinx-doc)
+                                  (sphinx-doc-mode t)))
