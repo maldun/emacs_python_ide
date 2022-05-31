@@ -129,13 +129,9 @@
 (define-key global-map (kbd "s-<right>") 'next-buffer)  ;; switch to next buffer
 (define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; switch to previous buffer
 
-;;)
-;;(require 'ido
-;;(ido-mode t)
-(require 'python-mode)
-;;(add-hook 'python-mode-hook 'anaconda-mode)
-;;(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-;; add scons file to the known python file list
+;;python instead of python-mode (31.5.)
+;;https://emacs.stackexchange.com/q/71954/21383
+(require 'python)
 (add-to-list 'auto-mode-alist '("\\SConstruct\\'" . python-mode))
 
 ;; Normal Copy paste
