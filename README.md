@@ -57,10 +57,7 @@ Gives emacs tabs like in most modern applications
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do symbolic links. pdbpm, dph and rpdb are useful shortcuts for debugging-features which are not defined by default:
 ```
-ln -s /home/$USER/.emacs.d/defs /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/defs
-ln -s /home/$USER/.emacs.d/pdbpm /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/pdbpm
-ln -s /home/$USER/.emacs.d/dph /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
-ln -s /home/$USER/.emacs.d/rpdb /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
+~/.emacs.d$ ./set_snippets.sh
 
 ```
 
