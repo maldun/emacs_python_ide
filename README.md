@@ -37,15 +37,27 @@ with pip.
 If not, use:
 ```pip3 install --user black flake8 jedi rope importmagic```
 
+### Personalized Header Files for Python.
+In the IDE.el, look up the line:
+```marioschwaiger/yas-python```
+Change the name and whatever is required. This will be the default header for any *.py* File
+
+## Seriously, what are these things
+During the process of constant improvement I notice quite often I do not know myself which of the packages are doing what. If something doesn't behave properly here's what to blame:
+
+
+#### rainbow-delimiters
+Colours brackets accordingly and gives a strong visual feedback if brackets are missed
+
+#### centaur-tabs
+Gives emacs tabs like in most modern applications
+
 
 ### Sphinx-Compatible defs and Shor
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do symbolic links. pdbpm, dph and rpdb are useful shortcuts for debugging-features which are not defined by default:
 ```
-ln -s /home/$USER/.emacs.d/defs /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/defs
-ln -s /home/$USER/.emacs.d/pdbpm /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/pdbpm
-ln -s /home/$USER/.emacs.d/dph /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
-ln -s /home/$USER/.emacs.d/rpdb /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
+~/.emacs.d$ ./set_snippets.sh
 
 ```
 

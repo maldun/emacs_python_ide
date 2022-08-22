@@ -37,7 +37,7 @@
     docker-compose-mode
     org
     markdown-mode
-;;    neotree   
+    sphinx-doc
     all-the-icons
     use-package
     highlight-symbol
@@ -52,6 +52,7 @@
     centaur-tabs
     rainbow-delimiters ;;12.4.21
     smartparens;;12.4.21
+    json-mode;;19.5.
     ))
 
 ;; org mode
@@ -128,13 +129,9 @@
 (define-key global-map (kbd "s-<right>") 'next-buffer)  ;; switch to next buffer
 (define-key global-map (kbd "s-<left>") 'previous-buffer)  ;; switch to previous buffer
 
-;;)
-;;(require 'ido
-;;(ido-mode t)
-(require 'python-mode)
-;;(add-hook 'python-mode-hook 'anaconda-mode)
-;;(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-;; add scons file to the known python file list
+;;python instead of python-mode (31.5.)
+;;https://emacs.stackexchange.com/q/71954/21383
+(require 'python)
 (add-to-list 'auto-mode-alist '("\\SConstruct\\'" . python-mode))
 
 ;; Normal Copy paste
@@ -215,12 +212,12 @@
 (show-paren-mode 1)
 
 ;; A static file list is really cool, like a modern IDE
-(package-initialize)
-(require 'package)
-(add-to-list 'load-path "/home/marioschwaiger/.emacs.d/neotree")
-(require 'neotree)
-(global-set-key (kbd "C-x M-f") 'neotree-toggle)
-  (setq neo-window-fixed-size nil)
+;;(package-initialize)
+;;(require 'package)
+;;(add-to-list 'load-path "/home/marioschwaiger/.emacs.d/neotree")
+;;(require 'neotree)
+;;(global-set-key (kbd "C-x M-f") 'neotree-toggle)
+;;  (setq neo-window-fixed-size nil)
 
 ;; Automatically save and restore sessions
 (setq desktop-dirname             "~/.emacs.d/desktop/"
@@ -253,13 +250,13 @@
   )
 
 ;; All modern IDEs have the feature to obtain a list of the current documents
-(require 'all-the-icons)
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;;(require 'all-the-icons)
+;;(require 'neotree)
+;;(global-set-key [f8] 'neotree-toggle)
+;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 ;; I'm a Nerd
-(setq neo-theme 'nerd)
-(setq neo-vc-integration '(face))
+;;(setq neo-theme 'nerd)
+;;(setq neo-vc-integration '(face))
 
 ;; Showing differences to the last Git commit
 (require 'diff-hl)
@@ -364,13 +361,13 @@ buffer in current window."
 (doom-themes-visual-bell-config)
 
 ;; Enable custom neotree theme (all-the-icons must be installed!)
-(doom-themes-neotree-config)
+;;(doom-themes-neotree-config)
 ;; or for treemacs users
-(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-(doom-themes-treemacs-config)
+;;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;(doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
-(doom-themes-org-config)
+;;(doom-themes-org-config)
 
 
 (require 'sublimity)
@@ -406,3 +403,115 @@ buffer in current window."
 ;; Similar for this mode
 ;; Always start smartparens mode in js-mode.
 (add-hook 'elpy-mode-hook 'smartparens-mode)
+
+;; 30.6.21 - Added Treemacs
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "<f8> SPC") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay      0.5
+          treemacs-directory-name-transformer    #'identity
+          treemacs-display-in-side-window        nil  
+          treemacs-eldoc-display                 t
+          treemacs-file-event-delay              500000
+          treemacs-file-extension-regex          treemacs-last-period-regex-value
+          treemacs-file-follow-delay             0.2
+          treemacs-file-name-transformer         #'identity
+          treemacs-follow-after-init             t
+          treemacs-expand-after-init             t
+          treemacs-git-command-pipe              ""
+          treemacs-goto-tag-strategy             'refetch-index
+          treemacs-indentation                   2
+          treemacs-indentation-string            " "
+          treemacs-is-never-other-window         nil
+          treemacs-max-git-entries               5000
+          treemacs-missing-project-action        'ask
+          treemacs-move-forward-on-expand        nil
+          treemacs-no-png-images                 nil
+          treemacs-no-delete-other-windows       t
+          treemacs-project-follow-cleanup        nil
+          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                      'left
+          treemacs-read-string-input             'from-child-frame
+          treemacs-recenter-distance             0.1
+          treemacs-recenter-after-file-follow    nil
+          treemacs-recenter-after-tag-follow     nil
+          treemacs-recenter-after-project-jump   'always
+          treemacs-recenter-after-project-expand 'on-distance
+          treemacs-litter-directories            '("/node_modules" "/.venv" "/.cask")
+          treemacs-show-cursor                   nil
+          treemacs-show-hidden-files             t
+          treemacs-silent-filewatch              nil
+          treemacs-silent-refresh                nil
+          treemacs-sorting                       'alphabetic-asc
+          treemacs-space-between-root-nodes      t
+          treemacs-tag-follow-cleanup            t
+          treemacs-tag-follow-delay              1.5
+          treemacs-user-mode-line-format         nil
+          treemacs-user-header-line-format       nil
+          treemacs-width                         35
+	  treemacs-width-is-initially-locked	 nil 
+          treemacs-workspace-switch-cleanup      nil)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+;;(define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+(with-eval-after-load 'treemacs
+    (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after (treemacs dired)
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(add-hook 'emacs-startup-hook 'treemacs)
+
+(use-package auto-package-update
+   :ensure t
+   :config
+   (setq auto-package-update-delete-old-versions t
+         auto-package-update-interval 4)
+   (auto-package-update-maybe))
+
+
+;;This is used for the Autodoc
+(add-hook 'python-mode-hook (lambda ()
+                                  (require 'sphinx-doc)
+                                  (sphinx-doc-mode t)))
