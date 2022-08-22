@@ -18,6 +18,7 @@ $ git clone https://github.com/maldun/emacs_python_ide .emacs.d/
 #Adding: 
 $ echo '(setq IDE-path "~/.emacs.d/")' >> .emacs
 $ echo "(load (mapconcat 'identity (list IDE-path \"IDE.el\") \"\"))" >> .emacs
+$ ./set_snippets.sh
 $ emacs #Have fun, but this might take just a little
 ```
 
