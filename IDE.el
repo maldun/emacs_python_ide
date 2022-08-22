@@ -315,7 +315,7 @@ buffer in current window."
 (defun marioschwaiger/yas-python ()
   (interactive)
 ;;  (yas-expand-snippet (yas-lookup-snippet "cmake_minimum_required" 'cmake-mode)))
-  (yas-expand-snippet (yas-lookup-snippet "do_python_header" 'python-mode)))
+  (yas-expand-snippet (yas-lookup-snippet "dph" 'python-mode)))
 
 
 (use-package autoinsert
