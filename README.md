@@ -18,8 +18,8 @@ $ git clone https://github.com/maldun/emacs_python_ide .emacs.d/
 #Adding: 
 $ echo '(setq IDE-path "~/.emacs.d/")' >> .emacs
 $ echo "(load (mapconcat 'identity (list IDE-path \"IDE.el\") \"\"))" >> .emacs
-$ cd .emacs.d && ./set_snippets.sh
-$ emacs #Have fun, but this might take just a little
+$ emacs #Have fun, but this might take just a little, but you have to exit again if you want the snippets to be set
+$ cd .emacs.d && chmod +x set_snippets.sh &&./set_snippets.sh #Now all the folders exist
 ```
 
 to your .emacs
