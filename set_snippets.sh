@@ -32,6 +32,9 @@ fi
 if [ "$1" = "-l" ] ; then
     echo "Delete Mode"
 fi
+if [ "$1" = "-p" ] ; then
+    echo "Persistent Mode"
+fi
 
 FILPA=$(pwd)
 cd elpa
@@ -83,8 +86,13 @@ for file in snippets/*; do
 	fi
 	
 	if [ "$CHECKONLY" = 1 ] ; then
-	    echo "Setting Link"
-	    ln -s ${ORIGFILE} ${FULLFILE}
+	    if [ "$1" = "-p" ] ; then
+		echo "Moving: ${ORIGFILE} ${FULLFILE}"
+		cp ${ORIGFILE} ${FULLFILE}
+	    else
+		echo "Setting Link ${ORIGFILE} ${FULLFILE}"
+		ln -s ${ORIGFILE} ${FULLFILE}
+	    fi	    
 	fi	
 done
 
