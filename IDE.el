@@ -179,9 +179,9 @@
 (setq python-shell-interpreter "ipython3"
       python-shell-interpreter-args "--simple-prompt -i")
 
-(message "Link snippets")
-(setq snip1 "defs")
-(setq snip2 "dph")
+;(message "Link snippets")
+(setq snip1 "snippets/defs")
+(setq snip2 "snippets/dph")
 
 (setq middle "elpa/elpy-*/snippets/python-mode/")
 (setq path-helper1 (mapconcat 'identity (list IDE-path middle) ""))
