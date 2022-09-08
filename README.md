@@ -59,8 +59,18 @@ Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do symbolic links. pdbpm, dph and rpdb are useful shortcuts for debugging-features which are not defined by default:
 ```
 ~/.emacs.d$ ./set_snippets.sh
-
 ```
+
+## Snippets
+Bear in mind there are (at least) two folders for snippets:
+```
+./elpa/elpy-20*.*/snippets/python-mode/
+```
+For all the short-cuts that are used in everyday-programming
+```
+./elpa/yasnippet-snippets-20*.*/snippets/emacs-lisp-mode/
+```
+That is used for instance if a new file is create and the snippet dph is ran against it.
 
 The remote_pdb (rpdb) in its currenct configuration can be accessed with the following command:
 ```$ telnet localhost 4444```
