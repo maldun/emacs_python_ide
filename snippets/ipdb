@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ipdb trace
+# key: ipdb
+# group: debug
+# --
+# fmt: off
+#`(format-time-string "%d.%m.%Y %H:%M")`$0
+import ipdb
+ipdb.set_trace()  # NOQA
+# fmt: on
+

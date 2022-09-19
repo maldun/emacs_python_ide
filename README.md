@@ -18,7 +18,8 @@ $ git clone https://github.com/maldun/emacs_python_ide .emacs.d/
 #Adding: 
 $ echo '(setq IDE-path "~/.emacs.d/")' >> .emacs
 $ echo "(load (mapconcat 'identity (list IDE-path \"IDE.el\") \"\"))" >> .emacs
-$ emacs #Have fun, but this might take just a little
+$ emacs #Have fun, but this might take just a little, but you have to exit again if you want the snippets to be set
+$ cd .emacs.d && chmod +x set_snippets.sh &&./set_snippets.sh #Now all the folders exist
 ```
 
 to your .emacs
@@ -37,17 +38,39 @@ with pip.
 If not, use:
 ```pip3 install --user black flake8 jedi rope importmagic```
 
+### Personalized Header Files for Python.
+In the IDE.el, look up the line:
+```marioschwaiger/yas-python```
+Change the name and whatever is required. This will be the default header for any *.py* File
+
+## Seriously, what are these things
+During the process of constant improvement I notice quite often I do not know myself which of the packages are doing what. If something doesn't behave properly here's what to blame:
+
+
+#### rainbow-delimiters
+Colours brackets accordingly and gives a strong visual feedback if brackets are missed
+
+#### centaur-tabs
+Gives emacs tabs like in most modern applications
+
 
 ### Sphinx-Compatible defs and Shor
 Do a backup of your .emacs.d/elpa/elpy-20190130.2109/snippets/python-mode/defs
 Then do symbolic links. pdbpm, dph and rpdb are useful shortcuts for debugging-features which are not defined by default:
 ```
-ln -s /home/$USER/.emacs.d/defs /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/defs
-ln -s /home/$USER/.emacs.d/pdbpm /home/$USER/.emacs.d/elpa/elpy-DATE.VERSION/snippets/python-mode/pdbpm
-ln -s /home/$USER/.emacs.d/dph /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
-ln -s /home/$USER/.emacs.d/rpdb /home/$USER/.emacs.d/elpa/elpy-DATE.VERSIO/snippets/python-mode/
-
+~/.emacs.d$ ./set_snippets.sh
 ```
+
+## Snippets
+Bear in mind there are (at least) two folders for snippets:
+```
+./elpa/elpy-20*.*/snippets/python-mode/
+```
+For all the short-cuts that are used in everyday-programming
+```
+./elpa/yasnippet-snippets-20*.*/snippets/emacs-lisp-mode/
+```
+That is used for instance if a new file is create and the snippet dph is ran against it.
 
 The remote_pdb (rpdb) in its currenct configuration can be accessed with the following command:
 ```$ telnet localhost 4444```
